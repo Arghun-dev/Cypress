@@ -56,3 +56,18 @@ describe('Our second suit', () => {
   })
 })
 ```
+
+## Types of Locators
+
+always add `/// <reference types="cypress" />`
+
+this will help you develop `cypress` it gives you access the cypress syntax highlights.
+
+`cy.get()` => this is the basic method to get any web element.
+
+`cy.get('')` => inside of the `''` you should provide your Locators name
+
+**Locators:**
+
+1. By Tag Name => `cy.get('input')`
+2. By ID => `cy.get('#inputEmail1')`
