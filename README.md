@@ -69,5 +69,13 @@ this will help you develop `cypress` it gives you access the cypress syntax high
 
 **Locators:**
 
-1. By Tag Name => `cy.get('input')`
-2. By ID => `cy.get('#inputEmail1')`
+1. by Tag Name => `cy.get('input')`
+2. by ID => `cy.get('#inputEmail1')`
+3. by ClassName => `cy.get('.inputEmail1')`
+4. by Attribute name => `cy.get('[placeholder]')`
+5. by Attribute name and value => `cy.get('[placeholder="Email"]')`
+6. by Class value => `cy.get('[class="input-full-width size-medium shape-rectangle"]')`
+7. by Tag name and Attribute with value => `cy.get('input[placeholder="Email"]')`
+8. by two different attributes => `cy.get('[placeholder="Email"][fullwidth or type="email"]')`
+9. by tag name, Attribute with value, ID and Class name => `cy.get('input[placeholder="Email"]#inputEmail1.input-full-width')`
+10. The most recommended way by Cypress => `cy.get('[data-cy="inputEmail1"]')`
