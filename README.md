@@ -111,3 +111,5 @@ Imagine we wanna find the button with the text `Sign in`, but imagine we have tw
 ```js
 cy.contains('[status="warning"]', 'Sign in');
 ```
+
+The above code says, hey cypress let's find for me the web element, which contains `Sign in` and with the attribute and value of `status="warning"`
