@@ -97,3 +97,11 @@ describe('Our first suit', () => {
   })
 })
 ```
+
+to only run one test, run this code
+
+```js
+it.only('test to run just this', () => {
+  
+})
+```
