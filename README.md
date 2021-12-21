@@ -105,3 +105,9 @@ it.only('test to run just this', () => {
   
 })
 ```
+
+Imagine we wanna find the button with the text `Sign in`, but imagine we have two `Sign in` button, but we want to find `Sign in` button with the attribute `status="warning"`
+
+```js
+cy.contains('[status="warning"]', 'Sign in');
+```
