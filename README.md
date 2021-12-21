@@ -113,3 +113,14 @@ cy.contains('[status="warning"]', 'Sign in');
 ```
 
 The above code says, hey cypress let's find for me the web element, which contains `Sign in` and with the attribute and value of `status="warning"`
+
+Imagine, we are looking for Sign in button which does not have a specific identifier, how should we do that? in order find this button we need find first unique id in this section all the elements around that button, and then travel to that button.
+
+**This is how you travel through the DOM**
+
+```js
+cy.get('#input3')
+  .parents('form')
+  .find('button')
+  .should('contain', 'Sign in').parents('form').find('nb-checkbox').click()
+```
