@@ -79,3 +79,21 @@ this will help you develop `cypress` it gives you access the cypress syntax high
 8. by two different attributes => `cy.get('[placeholder="Email"][fullwidth or type="email"]')`
 9. by tag name, Attribute with value, ID and Class name => `cy.get('input[placeholder="Email"]#inputEmail1.input-full-width')`
 10. The most recommended way by Cypress => `cy.get('[data-cy="inputEmail1"]')`
+
+
+In order to open our application in the `Cypress`, we need to execute the command `cy.visit('/')`
+
+
+for example we want to /forms/layouts
+
+in the menu we have **Forms** and **Form Layouts**
+
+```js
+describe('Our first suit', () => {
+  it ('first test', () => {
+    cy.visit('/');
+    cy.contains('Forms').click()
+    cy.contains('Form Layouts').click()
+  })
+})
+```
