@@ -127,3 +127,5 @@ cy.get('#input3')
   .find('nb-checkbox')
   .click()
 ```
+
+**Tip: `find` method is only to call and find child elements and you can not use it to get parent elements**
