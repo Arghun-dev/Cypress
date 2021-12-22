@@ -129,3 +129,5 @@ cy.get('#input3')
 ```
 
 **Tip: `find` method is only to call and find child elements and you can not use it to get parent elements**
+
+**How to find sibling elements in `Cypress` => in order to, we first need to travel to the parent element and then travel to the child element**
