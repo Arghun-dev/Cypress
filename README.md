@@ -122,5 +122,8 @@ Imagine, we are looking for Sign in button which does not have a specific identi
 cy.get('#input3')
   .parents('form')
   .find('button')
-  .should('contain', 'Sign in').parents('form').find('nb-checkbox').click()
+  .should('contain', 'Sign in')
+  .parents('form')
+  .find('nb-checkbox')
+  .click()
 ```
