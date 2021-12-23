@@ -169,5 +169,8 @@ cy.contains('nb-card', 'Basic form')
   .click()
   .find('.custom-checkbox')
   .invoke('attr', 'class')
-  .should('contain', 'checked')
+  // .should('contain', 'checked')
+  .then(classValue => {
+    expect(classValue).to.contain('checked')
+  })
 ```
