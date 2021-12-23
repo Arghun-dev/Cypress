@@ -131,3 +131,5 @@ cy.get('#input3')
 **Tip: `find` method is only to call and find child elements and you can not use it to get parent elements**
 
 **How to find sibling elements in `Cypress` => in order to, we first need to travel to the parent element and then travel to the child element**
+
+**Very Important Tip** in Cypress if you want to use the `DRY` you should use `.then` actually you can not save something in a const variable and re use it without using `.then` you know why? Because `Cypress` is `Asynchronous`.
