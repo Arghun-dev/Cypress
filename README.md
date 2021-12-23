@@ -160,3 +160,14 @@ it.only('invoke command', () => {
   })
 })
 ```
+
+**Testing checkbox**
+
+```js
+cy.contains('nb-card', 'Basic form')
+  .find('nb-checkbox')
+  .click()
+  .find('.custom-checkbox')
+  .invoke('attr', 'class')
+  .should('contain', 'checked')
+```
