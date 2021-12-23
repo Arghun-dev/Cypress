@@ -133,3 +133,30 @@ cy.get('#input3')
 **How to find sibling elements in `Cypress` => in order to, we first need to travel to the parent element and then travel to the child element**
 
 **Very Important Tip** in Cypress if you want to use the `DRY` you should use `.then` actually you can not save something in a const variable and re use it without using `.then` you know why? Because `Cypress` is `Asynchronous`.
+
+### Invoke Command
+
+**Example: **
+
+How to find the the email input:
+
+```js
+it.only('invoke command', () => {
+  cy.visit('/');
+  cy.contains('Forms').click();
+  cy.contains('Form Layouts').click();
+  
+  // 1
+  cy.get('[for="exampleInputEmail1"]').should('contain', 'Email address');
+  
+  // 2
+  cy.get('[for="exampleInputEmail1"]').then((label) => {
+     expect(label.text()).to.equal('Email address');
+  })
+  
+  // 3
+  cy.get('[for="exampleInputEmail1"]').invoke('text').then((text) => {
+     expect(text).to.equal('Email address');
+  })
+})
+```
