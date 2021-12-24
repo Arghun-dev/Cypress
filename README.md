@@ -178,3 +178,18 @@ cy.contains('nb-card', 'Basic form')
 **one way to make an assertion, is just using `should` method, and second way of making the assetion is to extract, result of the invoke function, as a parameter, for then function and then make assertion using expect.**
 
 **So, this was the first example of using the invoke function, is getting the attribute values, and making some assertions with these values, or anything you need to do with this values.**
+
+
+let's say we have a date picker, when you click on to the date picker.
+
+```js
+it.only('assert property', () => {
+  cy.visit('/');
+  cy.contains('Forms').click();
+  cy.contains('Datepicker').click();
+  
+  cy.contains('nb-card', 'Common Datepicker').find('input').then(input => {
+    
+  })
+})
+```
