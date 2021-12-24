@@ -149,12 +149,12 @@ it.only('invoke command', () => {
   // 1
   cy.get('[for="exampleInputEmail1"]').should('contain', 'Email address');
   
-  // 2
+  // 2 in this example we got the result of this function `ct.get(?)` => saved it as `label` => the `label` here is jQuery element and then we use jQuery method `.text()` to get the text from this label
   cy.get('[for="exampleInputEmail1"]').then((label) => {
      expect(label.text()).to.equal('Email address');
   })
   
-  // 3
+  // 3 in this example we did the same but here, we used Cypress invoke method, to get the `text` from it. We saved this as a text parameter to this function and we make the assertion that it should equal to `Email address`
   cy.get('[for="exampleInputEmail1"]').invoke('text').then((text) => {
      expect(text).to.equal('Email address');
   })
