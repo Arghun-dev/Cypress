@@ -199,6 +199,8 @@ it.only('assert property', () => {
 
 ### Checkboxes and Radio Buttons
 
+
+**Radio Buttons**
 ```js
 cy.visit('/');
 cy.contains('Forms').click();
@@ -212,5 +214,18 @@ cy.contains('nb-card', 'Using the Grid').find('[type="radio"]').then(radioButton
   cy.wrap(radioButtons).eq(0).should('not.be.checked');
   
   cy.wrap(radioButtons).eq(2).should('be.disabled');
+})
+```
+
+**CheckBoxes**
+```js
+it.only('check boxes', () => {
+  cy.visit('/');
+  cy.contains('Forms').click();
+  cy.contains('Form Layouts').click();
+  
+  cy.get('[type="checkbox"]').check({ force: true }); // you will not be able to uncheck the checkbox with this method, to uncheck the checkbox you have to use click method
+  
+  cy.get('[type="checkbox"]').click({ force: true }); // this way you can uncheck the checkbox which is previously checked
 })
 ```
