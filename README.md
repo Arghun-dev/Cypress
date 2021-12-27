@@ -293,5 +293,11 @@ it.only('Web tables') {
     cy.wrap(tableColumns).eq(2).should('contain', 'Arghun');
     cy.wrap(tableColumns).eq(3).should('contain', 'Mousanezhad');
   }) 
+  
+  // 3
+  cy.get('thead [placeholder="Age"]').type('20')
+  cy.get('table tr').each(tableRow => {
+    cy.get(tableRow).find('td').eq(6).should('contain', 20);
+  })
 }
 ```
