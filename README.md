@@ -229,3 +229,37 @@ it.only('check boxes', () => {
   cy.get('[type="checkbox"]').click({ force: true }); // this way you can uncheck the checkbox which is previously checked
 })
 ```
+
+
+### Lists and Dropdowns
+
+```js
+it('lists and dropdowns', () => {
+
+  // 1
+  cy.visit('/');
+  cy.get('nav nb-select').click();
+  cy.get('.options-lits').contains('Dark').click();
+  cy.get('nav nb-select').should('contain', 'Dark');
+  cy.get('nb-layout-header nav').should('have.css', 'background-color', 'rgb(34, 43, 69)');
+  
+  // 2
+  cy.get('nav nb-select').then(dropdown => {
+    cy.wrap(dropdown).click();
+    cy.get('.options-list nb-options').each(listItem => {
+      const itemText = listItem.text().trim();
+      
+      const colors = {
+        "Light": "rgb(255, 255, 255)",
+        "Dark": "rgb(34, 43, 69)",
+        "Cosmic": "rgb(50, 50, 89)",
+        "Corporate": "rgb(255, 255, 255)"
+      }
+      
+      cy.wrap(listItem).click();
+      cy.wrap(dropdown).should('contain', itemText);
+      cy.get('nb-layout-header nav').should('have.css', 'background-color', colors[itemText]);
+    })
+  })
+})
+```
