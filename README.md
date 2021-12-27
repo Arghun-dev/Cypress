@@ -296,7 +296,8 @@ it.only('Web tables') {
   
   // 3
   cy.get('thead [placeholder="Age"]').type('20')
-  cy.get('table tr').each(tableRow => {
+  cy.wait(500)
+  cy.get('tbody tr').each(tableRow => {
     cy.get(tableRow).find('td').eq(6).should('contain', 20);
   })
 }
