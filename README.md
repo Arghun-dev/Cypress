@@ -246,7 +246,7 @@ it('lists and dropdowns', () => {
   // 2
   cy.get('nav nb-select').then(dropdown => {
     cy.wrap(dropdown).click();
-    cy.get('.options-list nb-options').each(listItem => {
+    cy.get('.options-list nb-option').each((listItem, index) => {
       const itemText = listItem.text().trim();
       
       const colors = {
@@ -259,6 +259,9 @@ it('lists and dropdowns', () => {
       cy.wrap(listItem).click();
       cy.wrap(dropdown).should('contain', itemText);
       cy.get('nb-layout-header nav').should('have.css', 'background-color', colors[itemText]);
+      if (index < 3) {
+        cy.wrap(dropdown).click();
+      }
     })
   })
 })
