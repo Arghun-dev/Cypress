@@ -320,3 +320,32 @@ it('assert property', () => {
   })
 })
 ```
+
+### Popups and Tooltips
+
+```js
+it.only('tooltip', () => {
+  cy.visit('/')
+  cy.contains('Modal & Overlays').click()
+  cy.contains('Tooltip').click()
+  
+  cy.contains('nb-card', 'Colored Tooltips')
+    .contains('Default').click()
+  cy.get('nb-tooltip').should('contain', 'This is a tooltip')
+})
+```
+
+### Dialog boxes
+
+```js
+it.only('dialog box', () => {
+  cy.visit('/')
+  cy.contains('Tables & Data').click()
+  cy.contains('Smart Table').click()
+  
+  cy.get('tbody tr').first().find('.nb-trash').click()
+  cy.on('Window:confirm', (confirm) => {
+    expect(confirm).to.equal('Are you sure you want to delete?')
+  })
+})
+```
