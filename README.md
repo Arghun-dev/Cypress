@@ -379,3 +379,32 @@ describe('Test with backend', () => {
   })
 })
 ```
+
+
+## Mocking API Response
+
+in the fixtures folder create a json file for the data you want to mock, for example you get from the server the list of tags, just copy and paste the response you got to the `tags.json` file inside fixtures folder. and then replace the array data wit your own mock data, like: 
+
+tags.json
+
+```js
+tags: ["Cypress", "Automation", "Testing"]
+```
+
+```js
+describe('testing', () => {
+  beforeEach('login to the app', () => {
+    cy.server()
+    cy.route('GET', '**/tags', 'fixtures:tags.json')
+    cy.loginToTheApplication()
+  })
+  
+  it('should gave tags with routing object', () => {
+    cy.get('.tags-list')
+    .should('contain', 'Cypress')
+    .and('contain', 'automatino')
+    .and('contain', 'testing')
+  })
+})
+```
+
