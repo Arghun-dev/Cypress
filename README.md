@@ -395,7 +395,7 @@ tags: ["Cypress", "Automation", "Testing"]
 describe('testing', () => {
   beforeEach('login to the app', () => {
     cy.server()
-    cy.route('GET', '**/tags', 'fixtures:tags.json')
+    cy.route('GET', '**/tags', 'fixture :tags.json')
     cy.loginToTheApplication()
   })
   
