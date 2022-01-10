@@ -408,3 +408,4 @@ describe('testing', () => {
 })
 ```
 
+**To skip a test in cypress you should do it like this => `it.skip`**
