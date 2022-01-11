@@ -353,6 +353,19 @@ it.only('dialog box', () => {
 
 ## Working with APIs
 
+**Login Command**
+
+support/commands.js
+```js
+Cypress.Command.add(('loginToApplication') => {
+  cy.visit('/login')
+  cy.get("[placeholder='Email']").type('arghun.developer@gmail.com')
+  cy.get("[placeholder='Password']").type('asd344t1')
+  cy.get("form").submit()
+})
+```
+
+integration/firstTest.js
 ```js
 describe('Test with backend', () => {
   beforeEach('login to the app', () => {
