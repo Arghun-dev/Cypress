@@ -441,6 +441,9 @@ describe('verify correct request and response', () => {
   cy.wait('@postArticles')
   cy.get('@postArticles').then(xhr => {
     console.log(xhr)
+    expect(xhr.status).to.equal(200)
+    expect(xhr.request.body.article.body).to.equal('This is a body of the Article')
+    expect(res.request.body.article.body).to.equal('This is a description')
   })
 })
 ```
