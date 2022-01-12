@@ -468,3 +468,30 @@ it('verify global feed likes count', () => {
   cy.get('app-article-link button').eq(1).click().should('contain', '6')
 })
 ```
+
+
+## API calls using Cypress
+
+```js
+it('delete a new article in a global feed', () => {
+
+  const userCredentials = {
+    "user": {
+      "email": "arghun.developer@gmail.com",
+      "password:": "123adf4"
+    }
+  }
+
+  cy.request('POST', 'https://yourAPI/login', userCredentials)
+  .its('body').then(body => {
+    const token = body.user.token;
+    
+    cy.request({
+      url: 'https://API/articles/',
+      headers: { 'Authorization': 'Token ' + token },
+      method: 'POST',
+      body: 
+    })
+  })
+})
+```
