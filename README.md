@@ -422,3 +422,25 @@ describe('testing', () => {
 ```
 
 **To skip a test in cypress you should do it like this => `it.skip`**
+
+
+## Verification of Browser API Calls
+
+```js
+describe('verify correct request and response', () => {
+
+  cy.server()
+  cy.route('POST', '**/articles').as('postArticles')
+
+  cy.contains('New Article').click()
+  cy.get('[formcontrolname="title"]').type('This is a title')
+  cy.get('[formcontrolname="description"]').type('This is a description')
+  cy.get('[formcontrolname="body"]').type('This is a body of the Article')
+  cy.contains('Publish Article').click()
+  
+  cy.wait('@postArticles')
+  cy.get('@postArticles').then(xhr => {
+    console.log(xhr)
+  })
+})
+```
