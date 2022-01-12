@@ -447,3 +447,24 @@ describe('verify correct request and response', () => {
   })
 })
 ```
+
+
+```js
+it('verify global feed likes count', () => {
+  cy.route('GET', '**/articles/feed*', '{"articles": [], "articlesCount": 0}')
+  cy.route('GET', '**/articles*', 'fixture:articles.json')
+  
+  cy.contains('Global Feed').click()
+  cy.get('app-article-list button').then(listOfbuttons => {
+    expect(listOfbuttons[0]).to.contain('1')
+    expect(listOfbuttons[1]).to.contain('5')
+  })
+  
+  cy.fixture('articles').then(file => {
+    const articleLink = file.articles[1].slug;
+    cy.route("POST", "**/articles/"+articleLink+"/favorite", articles)
+  })
+  
+  cy.get('app-article-link button').eq(1).click().should('contain', '6')
+})
+```
