@@ -495,3 +495,8 @@ it('delete a new article in a global feed', () => {
   })
 })
 ```
+
+
+# Advanced Features
+
+## NPM scripts and Cypress CLI
