@@ -497,6 +497,61 @@ it('delete a new article in a global feed', () => {
 ```
 
 
-# Advanced Features
+# React App Testing With Cypress
 
-## NPM scripts and Cypress CLI
+first we need to install cypress and configure it to our react app.
+
+`$. npm i -D cypress`
+
+and in package.json in `scripts` tag, change the `test`: `react test` into => `test`: `cypress open`.
+
+now if you run `npm test`, it will run the command `cypress open` => by doing that, you will get somethings automatically, you will get a new cypress directory, you can write your tests there.
+
+And you'll also get a `cypress.json` file, where we can do our top level configurations.
+
+If you get this error: **Cypress verification timed out**
+
+Just run this command: `npx cypress verify`
+
+Now you can run `npm test` again.
+
+
+in our `cypress.json` file, we can do some configuration that is going to help us from, you know repeating ourselves a couple of times, so first thing that we're going to do, is creating a `baseUrl`, and this will be a reference point for running our test if you want to run tests on different pages and locations of your application, then you'll be able to branch off of this base url, rather than typing in localhost:3000 or whatever it is, every single time.
+
+So, in our case our base url is `localhost:3000`
+
+cypress.json
+
+```js
+{
+  "baseUrl": "http://localhost:3000"
+}
+```
+
+Now inside `cypress/integration`, you can write your tests. inside this directory you can also write your tests like `homepage.spec.js` and also `homepage.js`
+
+homepage.spec.js
+
+```js
+describe("renders the home page", () => {
+  it("renders correctly", () => {
+     cy.visit("/");
+     cy.get("#container").should("exist");
+  })
+})
+```
+
+very easy right!!!
+
+so let's go ahead and get our second test going and for this, and we're gonna use a cool feature in cypress called `experimental studio`,
+
+so in `cypress.json` set `experimentalStudio`: `true`
+
+cypress.json
+
+```js
+{
+  "baseUrl": "localhost:3000",
+  "experimentalStudio": true
+}
+```
