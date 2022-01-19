@@ -588,7 +588,7 @@ and also you need to import this plugin which you have installed, and remember, 
 it("allows the date picker to be used", () => {
   cy.visit("/");
   cy.get("#date").type("2021-02-17");
-  cy.findByText("Boston Celtics").should("exist");
+  cy.findAllByText("Boston Celtics").should("exist");
 })
 
 it("routes to a team's page", () => {
@@ -607,5 +607,31 @@ describe("renders the home page", () => {
   it(...)
   
   it(...)
+})
+```
+
+and for example you are repeating a text in several test files to not to repeat that, just do this: define an `env` property in `cypress.json` and define a varivale for your text and re use it in your test files like below:
+
+package.json
+
+```js
+{
+  "baseUrl": "http://localhost:3000",
+  "experimentalStudio": true,
+  "env": {
+    "celtics": "Boston Celtics"
+  }
+}
+```
+
+test.spec.js
+
+```js
+const CELTICS = Cypress.env("celtics");
+
+describe("test", () => {
+  it("testing first", () => {
+    cy.findAllByText(CELTICS)
+  })
 })
 ```
