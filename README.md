@@ -541,6 +541,17 @@ describe("renders the home page", () => {
 })
 ```
 
+```js
+/// <reference types="cypress" />
+
+describe("renders home page", () => {
+  it("renders the home page correctly", () => {
+    cy.visit("/");
+    cy.get(".App").should("exist");
+  });
+});
+```
+
 very easy right!!!
 
 so let's go ahead and get our second test going and for this, and we're gonna use a cool feature in cypress called `experimental studio`,
