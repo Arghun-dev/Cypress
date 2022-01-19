@@ -566,3 +566,46 @@ cypress.json
   "experimentalStudio": true
 }
 ```
+
+second test
+
+date picker
+
+```js
+it("allows the date picker to be used", () => {
+  cy.visit("/");
+  cy.get("#date").type("2021-02-17");
+})
+```
+
+now, let's make sure, that we have the data, that we have got from server, we're gonna add a plugin `react-testing-library` that is gonna helps us to kind of add on to this cy get and we can actually find stuff by text instead.
+
+and also you need to import this plugin which you have installed, and remember, for example you don't know how to use this plugin which you have installed in your project, go to the cypress doc and find the plugin and go to the github page of that plugin. and there you find the usage guide of that plugin.
+
+`$. npm i -D @testing-library/cypress`
+
+```js
+it("allows the date picker to be used", () => {
+  cy.visit("/");
+  cy.get("#date").type("2021-02-17");
+  cy.findByText("Boston Celtics").should("exist");
+})
+
+it("routes to a team's page", () => {
+  cy.visit("/")
+})
+```
+
+as you can seen inside every test I visit the `/`. to not repeat this in every test do this:
+
+```js
+describe("renders the home page", () => {
+  cy.beforeEach(() => {
+    cy.visit("/");
+  })
+  
+  it(...)
+  
+  it(...)
+})
+```
