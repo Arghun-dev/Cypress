@@ -644,3 +644,11 @@ describe("test", () => {
   })
 })
 ```
+
+and if you have a `staging site` and you want to set up kind of like different environments for that, then what you could do, this is one method, in the same level of `cypress.json` create a new file called `cypress.staging.json`, the cool thing is that you can write `baseUrl` as `http://mystagingsite.com` whatever your staging site is, and from there, it'll just reference that url it'll actually pop this up, and that'll work for you. and in our `package.json` add another `script` and we could say like
+
+```js
+"scripts": {
+  "test-qa": "cypress open --config-file ./cypress.staging.json"
+}
+```
