@@ -630,8 +630,17 @@ test.spec.js
 const CELTICS = Cypress.env("celtics");
 
 describe("test", () => {
+
+  beforeEach(() => {
+     cy.visit("/");
+  })
+
   it("testing first", () => {
-    cy.findAllByText(CELTICS)
+    cy.get("#date").type("2021-02-17");
+    cy.findAllByText(CELTICS).should("exist");
+    cy.findAllByText(CELTICS).click();
+    cy.url().should("include", "teams/2");
+    cy.findByText("Confrence: East").should("exist");
   })
 })
 ```
